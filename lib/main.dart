@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MaterialApp(
+void main() => runApp(BytebankApp());
+
+class BytebankApp extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: Text('Transferência'),
@@ -11,7 +15,9 @@ void main() => runApp(MaterialApp(
         ),
         body: ListaDeTransferencia(),
       ),
-    ));
+    );
+  }
+}
 
 class ListaDeTransferencia extends StatelessWidget {
   @override
@@ -21,7 +27,8 @@ class ListaDeTransferencia extends StatelessWidget {
       ItemTransferencia(Transferencia(2999, 4949494)),
       ItemTransferencia(Transferencia(399, 4949494)),
       ItemTransferencia(Transferencia(399, 4949494)),
-      ItemTransferencia(Transferencia(399, 4949494)),
+      ItemTransferencia(Transferencia(349, 4949494)),
+      ItemTransferencia(Transferencia(349, 4949494)),
     ]);
   }
 }
