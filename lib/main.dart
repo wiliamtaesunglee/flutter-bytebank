@@ -4,32 +4,27 @@ void main() => runApp(BytebankApp());
 
 class BytebankApp extends StatelessWidget {
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Transferência'),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: Icon(Icons.add),
-        ),
-        body: ListaDeTransferencia(),
-      ),
-    );
+    return MaterialApp(home: ListaDeTransferencia());
   }
+}
+
+class Header extends AppBar {
+  Header(String titulo) : super(title: Text(titulo));
 }
 
 class ListaDeTransferencia extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      ItemTransferencia(Transferencia(100, 120202)),
-      ItemTransferencia(Transferencia(2999, 4949494)),
-      ItemTransferencia(Transferencia(399, 4949494)),
-      ItemTransferencia(Transferencia(399, 4949494)),
-      ItemTransferencia(Transferencia(349, 4949494)),
-      ItemTransferencia(Transferencia(349, 4949494)),
-    ]);
+    return Scaffold(
+        appBar: Header('transferência'),
+        body: Column(children: [
+          ItemTransferencia(Transferencia(100, 120202)),
+          ItemTransferencia(Transferencia(2999, 4949494)),
+          ItemTransferencia(Transferencia(399, 4949494)),
+          ItemTransferencia(Transferencia(399, 4949494)),
+          ItemTransferencia(Transferencia(349, 4949494)),
+          ItemTransferencia(Transferencia(349, 4949494)),
+        ]));
   }
 }
 
@@ -52,5 +47,12 @@ class ItemTransferencia extends StatelessWidget {
           title: Text(_tranferencia.valor.toString()),
           subtitle: Text(_tranferencia.numeroConta.toString())),
     );
+  }
+}
+
+class FormularioTransferencia extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(appBar: Header('Criando transação'));
   }
 }
