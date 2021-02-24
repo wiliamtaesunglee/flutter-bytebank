@@ -4,7 +4,7 @@ void main() => runApp(BytebankApp());
 
 class BytebankApp extends StatelessWidget {
   Widget build(BuildContext context) {
-    return MaterialApp(home: ListaDeTransferencia());
+    return MaterialApp(home: FormularioTransferencia());
   }
 }
 
@@ -52,7 +52,47 @@ class ItemTransferencia extends StatelessWidget {
 
 class FormularioTransferencia extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(appBar: Header('Criando transação'));
+  Widget	build(BuildContext	context)	{
+    return	Scaffold(
+      appBar:	AppBar(
+        title:	Text('Criando	Transferência'),
+      ),
+      body:	Column(
+        children:	<Widget>[
+          Padding(padding: EdgeInsets.all(12.0),
+            child:TextField(
+              style:TextStyle(fontSize: 24.0),
+              decoration: InputDecoration(
+                labelText: "Número da Conta",
+                hintText: "0000",
+              ),
+              keyboardType: TextInputType.number,
+            ),
+          ),
+          Padding(padding: EdgeInsets.all(12.0),
+            child:TextField(
+              style:TextStyle(fontSize: 24.0),
+              decoration: InputDecoration(
+               icon: Icon(Icons.monetization_on),
+                labelText: "Valor",
+                hintText: "0.00",
+              ),
+              keyboardType: TextInputType.numberWithOptions(signed:false,
+                  decimal: true
+              ),
+            ),
+          ),
+          Padding(padding: EdgeInsets.all(12.0),
+            child:RaisedButton(
+              child:Text("Confirmar"),
+              onPressed: () {
+                print("Clicou em confirmar");
+              },
+            ),
+
+          )
+        ],
+      ),
+    );
   }
 }
