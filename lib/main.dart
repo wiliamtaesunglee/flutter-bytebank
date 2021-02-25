@@ -92,20 +92,22 @@ class FormularioTransferencia extends StatelessWidget {
 
             ),
           ),
-          Padding(padding: EdgeInsets.all(12.0),
-            child:RaisedButton(
+          Builder(builder: (ctx)=>RaisedButton(
               child:Text("Confirmar"),
               onPressed: () {
-
                 final	int	numeroConta	=	int.tryParse(_controladorCampoNumeroConta.text);
                 final	double	valor	=	double.tryParse(_controladorCampoValor.text);
                 if(numeroConta	!=	null	&&	valor	!=	null){
                   final	transferenciaCriada	=	Transferencia(valor,	numeroConta);
                   debugPrint('$transferenciaCriada');
+                  Scaffold.of(ctx).showSnackBar(
+                      SnackBar(
+                        content: Text('$transferenciaCriada'),
+                      ));
+                  //tentar implementar com SnackBar
                 }
               },
-            ),
-
+            ), //RaisedButton
           )
         ],
       ),
