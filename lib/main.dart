@@ -72,34 +72,16 @@ class FormularioTransferencia extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TextField(
-              controller: _controladorCampoNumeroConta,
-              style: TextStyle(
-                fontSize: 24.0,
-              ),
-              decoration: InputDecoration(
-                labelText: 'Número da conta',
-                hintText: '0000',
-              ),
-              keyboardType: TextInputType.number,
-            ),
+          Editor(
+            controlador: _controladorCampoNumeroConta,
+            rotulo: 'Numero da conta',
+            dica: '0000',
           ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TextField(
-              controller: _controladorCampoValor,
-              style: TextStyle(
-                fontSize: 24.0,
-              ),
-              decoration: InputDecoration(
-                icon: Icon(Icons.monetization_on),
-                labelText: 'Valor',
-                hintText: '0000',
-              ),
-              keyboardType: TextInputType.number,
-            ),
+          Editor(
+            controlador: _controladorCampoValor,
+            rotulo: 'Valor',
+            dica: '0.00',
+            icone: Icons.monetization_on,
           ),
           RaisedButton(
             child: Text('Confirmar'),
@@ -114,6 +96,34 @@ class FormularioTransferencia extends StatelessWidget {
             },
           ),
         ],
+      ),
+    );
+  }
+}
+
+class Editor extends StatelessWidget {
+  final TextEditingController controlador;
+  final String rotulo;
+  final String dica;
+  final IconData icone;
+
+  Editor({this.controlador, this.dica, this.rotulo, this.icone});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: TextField(
+        controller: controlador,
+        style: TextStyle(
+          fontSize: 24.0,
+        ),
+        decoration: InputDecoration(
+          icon: icone != null ? Icon(icone) : null,
+          labelText: rotulo,
+          hintText: dica,
+        ),
+        keyboardType: TextInputType.number,
       ),
     );
   }
